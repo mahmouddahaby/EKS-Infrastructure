@@ -1,3 +1,14 @@
+# Create ecr
+resource "aws_ecr_repository" "my_repo" {
+  name = "my-repo"
+
+  image_tag_mutability = "MUTABLE"
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
+
+
 #Set up the first resource for the IAM role
 resource "aws_iam_role" "eks-iam-role" {
  name = "Fixeds-eks-iam-role"
