@@ -191,8 +191,8 @@ resource "aws_iam_role_policy_attachment" "worknode-AmazonEBSCSIDriver" {
   instance_types = ["t2.medium"]
  
   scaling_config {
-   desired_size = 1
-   max_size   = 1
+   desired_size = 2
+   max_size   = 2
    min_size   = 1
   }
  
