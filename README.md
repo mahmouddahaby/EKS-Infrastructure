@@ -19,6 +19,7 @@ Automate deployment of Fixed Solutions Infrastructure using a Jenkins pipeline a
 - Terraform
 - Docker
 - Kubernetes
+- Helm
 - Jenkins
 - Bash
 - Nginx Proxy Server
