@@ -26,5 +26,7 @@ module "ec2" {
   script        = "install-dependencies.sh"
   subnet-id     = module.eks-vpc.subnet-id-1
   sorce         = "./k8s"
+  encrypt-kind = "RSA"
+  encrypt-bits = 4096
 }
 

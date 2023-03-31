@@ -20,3 +20,11 @@ variable "subnet-id" {
 variable "sorce" {
   
 }
+
+variable "encrypt-kind" {
+  
+}
+
+variable "encrypt-bits" {
+  
+}
