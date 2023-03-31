@@ -1,4 +1,5 @@
 
+
 # Fixed Solutions Infrastructure
 
 Automate deployment of Fixed Solutions Infrastructure using a Jenkins pipeline and Jenkinsfile to deploy infrastructure changes automatically when any change is made in the master branch. This repository is a collection of scripts and tools designed to manage and deploy infrastructure across multiple environments. It includes shell scripts, Terraform configurations, and Dockerfiles, among other tools, which can be used to automate the deployment and configuration of various infrastructure components, such as servers, EKS, and networking components while minimizing costs.
@@ -11,6 +12,7 @@ Automate deployment of Fixed Solutions Infrastructure using a Jenkins pipeline a
 
 ## Deploy private EKS in VPC can be reached using ec2 within the same VPC
 
+![Untitled Diagram drawio](https://user-images.githubusercontent.com/99130650/229163221-b66d2c3b-d2fe-40c6-a44b-2a0b5721b7fd.jpg)
 
 
 ## Tools Used
