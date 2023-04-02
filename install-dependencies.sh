@@ -37,6 +37,6 @@ sudo apt-get update && sudo apt-get install helm
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx  
 
 # Install ingress nginx
-helm install ingress-nginx
+helm install ingress-nginx ingress-nginx/ingress-nginx
 
 
