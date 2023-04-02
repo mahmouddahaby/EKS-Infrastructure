@@ -2,7 +2,7 @@
 
 # Fixed Solutions Infrastructure
 
-Automate deployment of Fixed Solutions Infrastructure using a Jenkins pipeline and Jenkinsfile to deploy infrastructure changes automatically when any change is made in the master branch. This repository is a collection of scripts and tools designed to manage and deploy infrastructure across multiple environments. It includes shell scripts, Terraform configurations, and Dockerfiles, among other tools, which can be used to automate the deployment and configuration of various infrastructure components, such as servers, EKS, and networking components while minimizing costs.
+This repository contains scripts and tools for automating the deployment and configuration of infrastructure components across multiple environments, including servers, EKS, and networking components. The Terraform configurations provided in the repository set up an S3 bucket to store Terraform state files, enable versioning for the bucket, and create a DynamoDB table to manage locks. These configurations can be used to automate the deployment of infrastructure changes when any change is made in the master branch by using a Jenkins pipeline and Jenkinsfile. By automating infrastructure deployment, this repository helps to minimize costs and reduce the risk of errors
 
 
 
