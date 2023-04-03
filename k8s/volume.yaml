@@ -1,10 +1,15 @@
-kind: StorageClass
 apiVersion: storage.k8s.io/v1
+kind: StorageClass
 metadata:
   name: jenkins-storage
 provisioner: kubernetes.io/aws-ebs
 parameters:
   type: gp2
+  encrypted: "false"
+  fsType: ext4
+allowVolumeExpansion: true
+volumeBindingMode: Immediate
+reclaimPolicy: Delete
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
