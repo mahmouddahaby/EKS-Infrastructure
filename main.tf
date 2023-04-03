@@ -10,14 +10,8 @@ module "eks" {
   subnet-id = [module.eks-vpc.subnet-id-0, module.eks-vpc.subnet-id-1]
   vpc-id = module.eks-vpc.vpc_id
   eks-secgrp = module.networking.eks-secgrp
-  eks-iam-role = module.IAM.eks-iam-role
-  worker-iam-role = module.IAM.woeker-iam-role
 
 }
-module "IAM" {
-  source = "./IAM"
-}
-
 module "networking" {
   source  = "./networking"
   vpc-id  = module.eks-vpc.vpc_id

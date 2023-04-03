@@ -9,9 +9,3 @@ variable "eks-secgrp" {
   
 }
 
-variable "eks-iam-role" {
-  
-}
-variable "worker-iam-role" {
-  
-}

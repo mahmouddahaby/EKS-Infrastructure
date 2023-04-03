@@ -4,13 +4,12 @@ metadata:
   name: jenkins-service
   namespace: devops-tools
   annotations:
-    prometheus.io/scrape: 'true'
-    prometheus.io/path: /
-    prometheus.io/port: '8080'
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: 'true'
 spec:
   selector:
-    app: jenkins-server
+   app: jenkins-server
   type: LoadBalancer
   ports:
-    - port: 8080
+    - port: 80
       targetPort: 8080
