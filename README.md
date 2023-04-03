@@ -36,7 +36,7 @@ Before you can use this repository, you need to have the following:
 
 2- The AWS CLI installed and configured on your local machine
 
-3- Terraform installed on your local machine
+3- Terraform & Ansible installed on your local machine
 
 4- Linux-based environment, such as Ubuntu or CentOS
 
