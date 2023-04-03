@@ -19,6 +19,7 @@ This repository contains scripts and tools for automating the deployment and con
 
 - AWS
 - Terraform
+- Ansible
 - Docker
 - Kubernetes
 - Helm
