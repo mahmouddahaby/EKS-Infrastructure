@@ -19,11 +19,13 @@ mkdir /home/ubuntu/.aws
 ## Connect to the cluster
 aws eks --region "us-east-1" update-kubeconfig --name Fixeds-eks
 
+# Create name space for jenkins and jenkins agent
+kubectl create namespace devops-tools
+
 # Apply yaml files for jenkins 
 kubectl apply -f k8s/.
 
-# Create name space for jenkins and jenkins agent
-kubectl create namespace devops-tools
+
 
 # Install helm to apply nginx proxy
 
