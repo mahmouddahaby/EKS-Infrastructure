@@ -1,34 +1,3 @@
-# Create Security group for ec2 instance
-
-resource "aws_security_group" "ec2-sg" {
-  name_prefix = "example-sg"
-  vpc_id = var.vpc-id
-  ingress {
-    from_port = 22
-    to_port   = 22
-    protocol  = "tcp"
-    cidr_blocks = ["156.203.156.144/32"]
-  }
-  ingress {
-    from_port = 80
-    to_port   = 80
-    protocol  = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  ingress {
-    from_port = 443
-    to_port   = 443
-    protocol  = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
 # Retrive existin Key pair
 data "aws_key_pair" "eks" {
   key_name = "eks"
@@ -43,7 +12,7 @@ resource "aws_instance" "my-instance-public" {
   user_data                   = file(var.script)
   associate_public_ip_address = true
   subnet_id                   = var.subnet-id
-  vpc_security_group_ids      = [aws_security_group.ec2-sg.id]
+  vpc_security_group_ids      = [var.ec2-secgrp]
   key_name                    = "eks"
   
   provisioner "file" {

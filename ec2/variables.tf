@@ -20,3 +20,7 @@ variable "subnet-id" {
 variable "sorce" {
   
 }
+
+variable "ec2-secgrp" {
+  
+}
