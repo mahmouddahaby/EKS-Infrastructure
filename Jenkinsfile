@@ -6,6 +6,11 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: 'master']], userRemoteConfigs: [[url: 'https://github.com/mahmouddahaby/Fixed-Solutions-Infrastructure']]])
             }
         }
+        stage('Navigate to Terraform') {
+            steps {
+                sh 'cd Terraform'
+            }
+        }
         stage('Terraform Init') {
             steps {
                 sh 'terraform init'

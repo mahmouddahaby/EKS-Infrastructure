@@ -1,0 +1,25 @@
+---
+- name: Configure Jenkins on EKS Cluster
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Update kubeconfig for EKS cluster
+      shell: aws eks --region "us-east-1" update-kubeconfig --name Fixeds-eks
+
+    - name: Create namespace for Jenkins and Jenkins agent
+      shell: kubectl create namespace devops-tools
+
+    - name: Apply YAML files for Jenkins
+      shell: kubectl apply -f k8s/.
+      args:
+        chdir: ~
+    - name: Execute kubectl command
+      command: kubectl get all -n devops-tools
+      register: kubectl_output
+
+    - name: Show kubectl output
+      debug:
+        var: kubectl_output.stdout_lines
+
+
