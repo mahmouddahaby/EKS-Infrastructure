@@ -16,29 +16,19 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 mkdir /home/ubuntu/.aws
 
 
-# ## Connect to the cluster
-# aws eks --region "us-east-1" update-kubeconfig --name Fixeds-eks
-
-# # Create name space for jenkins and jenkins agent
-# kubectl create namespace devops-tools
-
-# # Apply yaml files for jenkins 
-# kubectl apply -f k8s/.
 
 
+# Install helm to apply nginx proxy
 
-# # Install helm to apply nginx proxy
+# Add the official Helm GPG key
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
-# # Add the official Helm GPG key
-# curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+# Install Helm
+sudo apt-get update && sudo apt-get install helm
 
-# # Install Helm
-# sudo apt-get update && sudo apt-get install helm
 
-# # Add ingress nginx
-# helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx  
 
-# # Install ingress nginx
-# helm install ingress-nginx ingress-nginx/ingress-nginx
+
+
 
 

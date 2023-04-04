@@ -1,6 +1,6 @@
 # Create ecr
-resource "aws_ecr_repository" "FS-app" {
-  name = "FS-app"
+resource "aws_ecr_repository" "fsapp" {
+  name = "fsapp"
 
   image_tag_mutability = "MUTABLE"
   image_scanning_configuration {
