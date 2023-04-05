@@ -8,9 +8,7 @@ pipeline {
         }
         stage('Terraform Init') {
             steps {
-                dir('Terraform') {
                     sh 'terraform init'
-                }
             }
         }
         stage('Terraform Apply') {
@@ -18,9 +16,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-                dir('Terraform') {
                     sh 'terraform apply -auto-approve'
-                }
             }
         }
     }
