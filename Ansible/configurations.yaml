@@ -9,7 +9,12 @@
 
     - name: Create namespace for Jenkins and Jenkins agent
       shell: kubectl create namespace devops-tools
+    
+    - name: Adding proxy
+      shell: helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
+    - name: install proxy 
+      shell: helm install ingress-nginx ingress-nginx/ingress-nginx 
     - name: Apply YAML files for Jenkins
       shell: kubectl apply -f k8s/.
       args:
