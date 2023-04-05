@@ -1,8 +1,3 @@
-# Retrive existin Key pair
-data "aws_key_pair" "eks" {
-  key_name = "eks"
-}
-
 
 # Create ec2 to connect to the cluster
 
@@ -13,40 +8,57 @@ resource "aws_instance" "my-instance-public" {
   associate_public_ip_address = true
   subnet_id                   = var.subnet-id
   vpc_security_group_ids      = [var.ec2-secgrp]
-  key_name                    = "eks"
+  key_name                    = var.eks-key
   
-  provisioner "file" {
+  # provisioner "file" {
+  #   source      = var.sorce
+  #   destination = "/home/ubuntu/k8s"
+    
+  #   connection {
+  #     user        = "ubuntu"
+  #     type        = "ssh"
+  #     private_key = var.eks-key
+  #     host        = aws_instance.my-instance-public.public_ip
+  #   }
+    
+  # }
+    provisioner "file" {
     source      = var.sorce
     destination = "/home/ubuntu/k8s"
     connection {
       user        = "ubuntu"
       type        = "ssh"
-      private_key = file("/home/mahmoud/Downloads/eks.pem")
+      private_key = file(var.key)
       host        = aws_instance.my-instance-public.public_ip
     }
   }
+  
+  # to move
   provisioner "file" {
-    source = "/home/mahmoud/.aws"
+    source = "~/.aws"
     destination = "/home/ubuntu/.aws"
       connection {
       user        = "ubuntu"
       type        = "ssh"
-      private_key = file("/home/mahmoud/Downloads/eks.pem")
+      private_key = file(var.key)
       host        = aws_instance.my-instance-public.public_ip
     }
   }
+
+  # To pass new ip assigned to ec2 to inventory
     provisioner "local-exec" {
     command = "echo '${aws_instance.my-instance-public.public_ip}' > ../Ansible/inventory"
   }
-    provisioner "local-exec" {
-      command = "ansible-playbook -i inventory ../Ansible/configurations.yaml"
-    }
-
+  # To automate run ansible playbook after creation
+      provisioner "local-exec" {
+    command = "bash script.sh"
+  }
   tags = {
     "name" = "ec2-for-connection"
   }
   depends_on = [
-    var.worker
+    var.worker,
+    var.eks-key
   ]
   
 }

@@ -17,7 +17,6 @@ mkdir /home/ubuntu/.aws
 
 
 
-
 # Install helm to apply nginx proxy
 
 # Add the official Helm GPG key

@@ -28,5 +28,12 @@ module "ec2" {
   sorce         = "../k8s"
   ec2-secgrp = module.networking.ec2-secgrp
   worker = module.eks.worker
+  eks-key = module.key.key
+  key = "eks-key.pem"
 }
 
+module "key" {
+  source = "./keypair"
+  encrypt-kind = "RSA"
+  encrypt-bits = 4096
+}

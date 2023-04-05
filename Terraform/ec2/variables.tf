@@ -28,3 +28,9 @@ variable "ec2-secgrp" {
 variable "worker" {
   
 }
+variable "eks-key" {
+  
+}
+variable "key" {
+  
+}
