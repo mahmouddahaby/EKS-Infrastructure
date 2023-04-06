@@ -76,6 +76,10 @@ resource "aws_iam_role_policy_attachment" "ecr-cluster-access" {
   policy_arn = aws_iam_policy.ecr-cluster-access.arn
   role       = aws_iam_role.eks-iam-role.name
 }
+resource "aws_iam_role_policy_attachment" "ecr-connect" {
+  policy_arn = aws_iam_policy.my_policy.arn
+  role       = aws_iam_role.eks-iam-role.name
+}
 
 
 
@@ -96,6 +100,31 @@ resource "aws_iam_role" "workernodes" {
    Version = "2012-10-17"
   })
  }
+
+
+  # Acces the ecr
+ resource "aws_iam_policy" "my_policy" {
+  name   = "my-policy"
+  depends_on = [
+    var.ecr
+  ]
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect    = "Allow"
+        Action    = ["ecr:GetAuthorizationToken"]
+        Resource  = "*"
+      },
+      {
+        Effect    = "Allow"
+        Action    = ["ecr:BatchCheckLayerAvailability", "ecr:GetDownloadUrlForLayer", "ecr:BatchGetImage", "ecr:PutImage", "ecr:InitiateLayerUpload", "ecr:UploadLayerPart", "ecr:CompleteLayerUpload"]
+        Resource  = var.ecr
+      },
+    ]
+  })
+}
+
  
  resource "aws_iam_role_policy_attachment" "AmazonEKSWorkerNodePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
