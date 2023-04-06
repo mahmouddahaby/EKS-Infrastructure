@@ -10,6 +10,8 @@ module "eks" {
   subnet-id = [module.eks-vpc.subnet-id-0, module.eks-vpc.subnet-id-1]
   vpc-id = module.eks-vpc.vpc_id
   eks-secgrp = module.networking.eks-secgrp
+  worker = module.IAM.worker-role
+  eks-role = module.IAM.eks-role
 
 }
 module "networking" {
@@ -36,4 +38,8 @@ module "key" {
   source = "./keypair"
   encrypt-kind = "RSA"
   encrypt-bits = 4096
+}
+
+module "IAM" {
+  source = "./IAM"
 }

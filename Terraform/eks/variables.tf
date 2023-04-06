@@ -9,3 +9,10 @@ variable "eks-secgrp" {
   
 }
 
+variable "eks-role" {
+  
+}
+
+variable "worker" {
+  
+}

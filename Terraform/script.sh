@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Wait for ec2 creation
-sleep 60
+sleep 120
 
 # Moving to ansible dir
 cd ../Ansible

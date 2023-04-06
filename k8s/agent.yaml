@@ -14,8 +14,7 @@ spec:
         app: jenkins-agent
     spec:
       securityContext:
-        fsGroup: 0
-        runAsUser: 0
+        privileged: true
       serviceAccountName: jenkins-admin
       containers:
         - name: jenkins-agent
@@ -33,3 +32,5 @@ spec:
         - name: docker-sock
           hostPath:
             path: /var/run/docker.sock
+
+      
