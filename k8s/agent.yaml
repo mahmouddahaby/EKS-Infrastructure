@@ -14,7 +14,8 @@ spec:
         app: jenkins-agent
     spec:
       securityContext:
-        privileged: true
+        fsGroup: 0
+        runAsUser: 0
       serviceAccountName: jenkins-admin
       containers:
         - name: jenkins-agent
