@@ -30,7 +30,7 @@ module "ec2" {
   sorce         = "../k8s"
   ec2-secgrp    = module.networking.ec2-secgrp
   worker        = module.eks.worker
-  eks-key       = module.key.key
+  eks-key       = "eks-key"
   key           = "eks-key.pem"
 }
 
