@@ -7,5 +7,5 @@ output "worker" {
 }
 
 output "ecr" {
-  value = aws_ecr_repository.fsapp.id
+  value = aws_ecr_repository.fsapp.arn
 }
