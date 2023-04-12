@@ -7,12 +7,6 @@ pipeline {
   }
   
   stages {
-    stage('Checkout') {
-      steps {
-        git branch: 'master', url: 'https://github.com/mahmouddahaby/Fixed-Solutions-Infrastructure.git'
-      }
-    }
-    
     stage('Terraform Init') {
       steps {
         dir('Terraform') {
