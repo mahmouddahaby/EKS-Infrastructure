@@ -9,40 +9,22 @@ resource "aws_instance" "my-instance-public" {
   subnet_id                   = var.subnet-id
   vpc_security_group_ids      = [var.ec2-secgrp]
   key_name                    = var.eks-key
-  
-  # provisioner "file" {
-  #   source      = var.sorce
-  #   destination = "/home/ubuntu/k8s"
-    
-  #   connection {
-  #     user        = "ubuntu"
-  #     type        = "ssh"
-  #     private_key = var.eks-key
-  #     host        = aws_instance.my-instance-public.public_ip
-  #   }
-    
-  # }
-    provisioner "file" {
-    source      = var.sorce
-    destination = "/home/ubuntu/k8s"
-    connection {
+  connection {
       user        = "ubuntu"
       type        = "ssh"
       private_key = file(var.key)
       host        = aws_instance.my-instance-public.public_ip
-    }
+  }
+
+    provisioner "file" {
+    source      = "../k8s"
+    destination = "/home/ubuntu/k8s"
   }
   
   # to move
   provisioner "file" {
     source = "~/.aws"
     destination = "/home/ubuntu/.aws"
-      connection {
-      user        = "ubuntu"
-      type        = "ssh"
-      private_key = file(var.key)
-      host        = aws_instance.my-instance-public.public_ip
-    }
   }
 
   # To pass new ip assigned to ec2 to inventory
@@ -58,7 +40,8 @@ resource "aws_instance" "my-instance-public" {
   }
   depends_on = [
     var.worker,
-    var.eks-key
+    var.eks-key,
+    var.ec2-secgrp
   ]
   
 }

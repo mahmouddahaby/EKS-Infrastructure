@@ -4,14 +4,30 @@
   gather_facts: no
 
   tasks:
+    - name: apt update
+      apt:
+        update_cache: yes
+      become: yes
+
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+      become: yes
+      notify: Update kubeconfig for EKS cluster
+    
+  handlers:
     - name: Update kubeconfig for EKS cluster
       shell: aws eks --region "us-east-1" update-kubeconfig --name Fixeds-eks
+      notify: Create namespace for Jenkins and Jenkins agent
 
     - name: Create namespace for Jenkins and Jenkins agent
       shell: kubectl create namespace devops-tools
-    
+      notify: Adding proxy
+
     - name: Adding proxy
       shell: helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+      notify: install proxy 
 
     - name: install proxy 
       shell: helm install ingress-nginx ingress-nginx/ingress-nginx 
@@ -19,12 +35,7 @@
       shell: kubectl apply -f k8s/.
       args:
         chdir: ~
-    - name: Execute kubectl command
-      command: kubectl get all -n devops-tools
-      register: kubectl_output
 
-    - name: Show kubectl output
-      debug:
-        var: kubectl_output.stdout_lines
+
 
 

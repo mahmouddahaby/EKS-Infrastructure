@@ -17,9 +17,9 @@ variable "script" {
 variable "subnet-id" {
   
 }
-variable "sorce" {
+# variable "sorce" {
   
-}
+# }
 
 variable "ec2-secgrp" {
   

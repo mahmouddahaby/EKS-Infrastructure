@@ -27,11 +27,11 @@ module "ec2" {
   instance_type = "t2.micro"
   script        = "install-dependencies.sh"
   subnet-id     = module.eks-vpc.subnet-id-1
-  sorce         = "../k8s"
-  ec2-secgrp    = module.networking.ec2-secgrp
-  worker        = module.eks.worker
-  eks-key       = "eks-key"
-  key           = "eks-key.pem"
+  # sorce         = "../k8s"
+  ec2-secgrp = module.networking.ec2-secgrp
+  worker     = module.eks.worker
+  eks-key    = "eks-key"
+  key        = "eks-key.pem"
 }
 
 module "key" {
