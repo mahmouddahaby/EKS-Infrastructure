@@ -1,6 +1,6 @@
 
 
-# Fixed Solutions Infrastructure
+# EKS-Infrastructure
 
 This repository contains scripts and tools for automating the deployment and configuration of infrastructure components across multiple environments, including servers, EKS, and networking components. The Terraform configurations provided in the repository set up an S3 bucket to store Terraform state files, enable versioning for the bucket, and create a DynamoDB table to manage locks. These configurations can be used to automate the deployment of infrastructure changes when any change is made in the master branch by using a Jenkins pipeline and Jenkinsfile. By automating infrastructure deployment, this repository helps to minimize costs and reduce the risk of errors
 
