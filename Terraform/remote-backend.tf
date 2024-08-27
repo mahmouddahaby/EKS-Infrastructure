@@ -31,7 +31,7 @@
 # # Configure the Terraform backend to store state in S3 and use DynamoDB to manage locks
 # terraform {
 #   backend "s3" {
-#     bucket         = "terraform-up-and-running-state-haidy"
+#     bucket         = "terraform-up-and-running-state"
 #     key            = "dev/terraform.tfstate"
 #     region         = "us-east-1"
 #     dynamodb_table = "terraform-up-and-running-locks"
